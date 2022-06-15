@@ -17,10 +17,15 @@ public class User implements Serializable{
 	private static final long serialVersionUID = 4806920792104736164L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
-	private String name;
-
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id=0;
+	private String name="sergio";
+	/*
+	public User (String name, long id) {
+		this.id=id;
+		this.name=name;
+	}
+	*/
 	public long getId() {
 		return id;
 	}
