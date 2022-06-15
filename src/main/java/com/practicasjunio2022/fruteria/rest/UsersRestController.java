@@ -8,11 +8,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.practicasjunio2022.fruteria.model.User;
 import com.practicasjunio2022.fruteria.repo.UserRepository;
 
 @RestController 
 @RequestMapping("/users")
-public class UsersRestController {
+public class UsersRestController  {
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -20,7 +21,7 @@ public class UsersRestController {
 	//@RequestMapping("/users/all")
 	@GetMapping("/all")
 	public String getUsers() {
-		this.userRepository.
+		
 		//System.out.println("getusers funciona");
 		return "getusers funciona";
 	}
@@ -29,6 +30,7 @@ public class UsersRestController {
 	public String getUserById(@PathVariable(name = "id") int id) {
 		
 		//System.out.println("getusers funciona");
-		return "getUser funciona"+id;
+		return userRepository.findAll().toString();
 	}
+	
 }
