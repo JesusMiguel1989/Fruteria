@@ -7,13 +7,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name = "USER")
+@Entity(name = "usuarios")
 public class User implements Serializable{
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 4806920792104736164L;
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + "]";
+	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -30,5 +34,5 @@ public class User implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 }

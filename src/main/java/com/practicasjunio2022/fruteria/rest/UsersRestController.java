@@ -20,9 +20,9 @@ public class UsersRestController {
 	//@RequestMapping("/users/all")
 	@GetMapping("/all")
 	public String getUsers() {
-		this.userRepository.
+		//this.userRepository.
 		//System.out.println("getusers funciona");
-		return "getusers funciona";
+		return userRepository.findAll().toString();
 	}
 	
 	@GetMapping("/get/{id}")
