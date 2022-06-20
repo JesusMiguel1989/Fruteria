@@ -8,8 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name = "usuarios")
-public class User implements Serializable{
+@Entity(name="Fruteria")
+public class Fruta implements Serializable{
 
 	/**
 	 * 
@@ -17,16 +17,13 @@ public class User implements Serializable{
 	private static final long serialVersionUID = 9091892231815355962L;
 
 	@Id
-<<<<<<< HEAD
 	@GeneratedValue(strategy = GenerationType.AUTO)
-=======
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
->>>>>>> fruta
-	private long id;
-
-	@Column
-	private String name;
+	private long cod_fruta;
 	
+	@Column(name="name")
+	private String name;
+	@Column(name="family")
+	private String family;
 	
 //	@Temporal(TemporalType.TIMESTAMP)
 //	@Column
@@ -35,12 +32,12 @@ public class User implements Serializable{
 //	@Transient
 //	private String name2;
 
-	public long getId() {
-		return id;
+	public long getcod_fruta() {
+		return cod_fruta;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setcod_fruta(long cod_fruta) {
+		this.cod_fruta = cod_fruta;
 	}
 
 	public String getName() {
@@ -49,5 +46,12 @@ public class User implements Serializable{
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getfamily() {
+		return family;
+	}
+	public void setfamilia(String family) {
+		this.family=family;
 	}
 }
