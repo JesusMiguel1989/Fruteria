@@ -17,11 +17,7 @@ public class User implements Serializable{
 	private static final long serialVersionUID = 9091892231815355962L;
 
 	@Id
-<<<<<<< HEAD
 	@GeneratedValue(strategy = GenerationType.AUTO)
-=======
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
->>>>>>> fruta
 	private long id;
 
 	@Column
