@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -60,7 +61,7 @@ public class ProvRestController {
 		return ResponseEntity.ok().build();
 	}
 
-	@PostMapping("/{id}")
+	@PutMapping("/{id}")
 	public Proveedor updateProv(@PathVariable("id") long id, @RequestBody Proveedor p) {
 		Proveedor ProvDb = this.provService.getById(id);
 		if (ProvDb != null) {
@@ -69,6 +70,11 @@ public class ProvRestController {
 		}
 		return ProvDb;
 	}
+	 @PostMapping("/nuevo")
+	    private int saveProv(@RequestBody Proveedor p) {
+	        provService.update(p);
+	        return (int) p.getId_prov();
+	    }
 	
 
 	@PostMapping("/name/{name}")

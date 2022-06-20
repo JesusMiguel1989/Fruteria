@@ -64,4 +64,9 @@ public class ProvServiceImpl implements ProvService {
 		this.provRepo.deleteById(id);
 	}
 
+	@Override
+	 public void saveOrUpdate(Proveedor p) {
+		this.provRepo.save(p);
+    }
+
 }
