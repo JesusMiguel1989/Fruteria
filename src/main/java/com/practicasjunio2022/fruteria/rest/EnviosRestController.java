@@ -8,8 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -58,39 +59,33 @@ public class EnviosRestController {
 		return ResponseEntity.ok().build();
 	}
 
-	@PatchMapping("/{id}")
+	@PutMapping("/{id}")
 	public Envios updateEnvios(@PathVariable("id") long id, @RequestBody Envios Envios) {
 		Envios EnviosDb = this.enviosService.getById(id);
 		if (EnviosDb != null) {
 			EnviosDb.setDireccion(Envios.getDireccion());
 			
-			EnviosDb = this.enviosService.update(EnviosDb);
+			EnviosDb = this.enviosService.updateorsave(EnviosDb);
 		}
 		return EnviosDb;
 	}
 
-	@PatchMapping("/Direccion/{Direccion}")
+	@PutMapping("/Direccion/{Direccion}")
 	public List<Envios> updateEnvios(@PathVariable("Direccion") String Direccion, @RequestBody final Envios Envios) {
 		List<Envios> listEnviosDb = this.enviosService.getBydireccion(Direccion);
 		if (!listEnviosDb.isEmpty()) {
 			listEnviosDb.forEach(x -> {
 				x.setDireccion(Envios.getDireccion());
-				this.enviosService.update(x);
+				this.enviosService.updateorsave(x);
 			});
 		}
 		return listEnviosDb;
 	}
 
-	@PatchMapping
-	public List<Envios> updateByDireccionEnvios(@RequestParam("Direccion") String Direccion,
-			@RequestBody(required = true) final Envios Envios) {
-		List<Envios> listEnviosDb = this.enviosService.getBydireccion(Direccion);
-		if (!listEnviosDb.isEmpty()) {
-			listEnviosDb.forEach(x -> {
-				x.setDireccion(Envios.getDireccion());
-				this.enviosService.update(x);
-			});
-		}
-		return listEnviosDb;
-	}
+	
+	 @PostMapping("/agregar")
+	    private long savePerson(@RequestBody Envios envios) {
+	       enviosService.updateorsave(envios);
+	        return  envios.getId();
+	    }
 }

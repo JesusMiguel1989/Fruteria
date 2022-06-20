@@ -15,9 +15,10 @@ public interface EnviosService {
 	
 	List<Envios> getBydireccion(String direccion);
 	
-	Envios update(Envios Envios);
+	Envios updateorsave(Envios Envios);
 	
 	void delete(long id);
+	
 	
 	Page<Envios> getAllSortBydireccion(int page, int size);
 	

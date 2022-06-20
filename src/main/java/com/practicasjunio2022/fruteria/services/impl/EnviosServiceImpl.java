@@ -7,11 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Component;
 
 import com.practicasjunio2022.fruteria.model.Envios;
 import com.practicasjunio2022.fruteria.repository.EnviosRepository;
 import com.practicasjunio2022.fruteria.services.EnviosService;
-
+@Component
 public class EnviosServiceImpl  implements EnviosService{
 	//@Qualifier(value = "nombre")
 		@Autowired
@@ -35,15 +36,15 @@ public class EnviosServiceImpl  implements EnviosService{
 
 		@Override
 		public List<Envios> getBydireccion(String name) {
-			List<Envios> listEnvioss = this.EnviosRepo.findBydireccion(name);
-			if(listEnvioss.isEmpty()) {
-				listEnvioss = this.EnviosRepo.findLikedireccion(name);
+			List<Envios> listEnvios = this.EnviosRepo.findBydireccion(name);
+			if(listEnvios.isEmpty()) {
+				listEnvios = this.EnviosRepo.findLikedireccion(name);
 			}
-			return listEnvioss;
+			return listEnvios;
 		}
 
 		@Override
-		public Envios update(Envios Envios) {
+		public Envios updateorsave(Envios Envios) {
 			return this.EnviosRepo.save(Envios);
 		}
 
