@@ -1,0 +1,7 @@
+com\practicasjunio2022\fruteria\fruteria\FruteriaApplication.class
+com\practicasjunio2022\fruteria\fruteria\model\User.class
+com\practicasjunio2022\fruteria\fruteria\services\UserService.class
+com\practicasjunio2022\fruteria\fruteria\ServletInitializer.class
+com\practicasjunio2022\fruteria\fruteria\repository\UserRepository.class
+com\practicasjunio2022\fruteria\fruteria\services\impl\UserServiceImpl.class
+com\practicasjunio2022\fruteria\fruteria\rest\UserRestController.class
