@@ -7,8 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity(name = "proveedores")
+@Entity
 public class Proveedor implements Serializable{
 
 	/**
@@ -20,9 +21,14 @@ public class Proveedor implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id_prov;
 
-	@Column
+	@Column(name="name")
+	
 	private String name;
+	
+	@Column(name="addres")
+	
 	private String addres;
+	
 	public long getId_prov() {
 		return id_prov;
 	}

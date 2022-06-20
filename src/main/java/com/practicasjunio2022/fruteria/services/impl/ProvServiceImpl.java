@@ -45,6 +45,14 @@ public class ProvServiceImpl implements ProvService {
 		}
 		return list;
 	}
+	@Override
+	public List<Proveedor> getByAddres(String addres) {
+		List<Proveedor> list = this.provRepo.findByAddres(addres);
+		if(list.isEmpty()) {
+			list = this.provRepo.findLikeName(addres);
+		}
+		return list;
+	}
 
 	@Override
 	public Proveedor update(Proveedor p) {

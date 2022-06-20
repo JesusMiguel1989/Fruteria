@@ -19,5 +19,7 @@ public interface ProvService {
 	void delete(long id);
 	
 	Page<Proveedor> getAllSortByname(int page, int size);
+
+	List<Proveedor> getByAddres(String addres);
 	
 }

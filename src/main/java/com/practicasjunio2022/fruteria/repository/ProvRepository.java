@@ -29,6 +29,8 @@ public interface ProvRepository extends PagingAndSortingRepository<Proveedor, Lo
 	 
 	 
 	 List<Proveedor> findAll(Sort sort);
+
+	 List<Proveedor> findByAddres(String addres);
 	 
 	 
 }

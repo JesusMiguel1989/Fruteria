@@ -8,15 +8,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.practicasjunio2022.fruteria.model.Proveedor;
-import com.practicasjunio2022.fruteria.model.User;
 import com.practicasjunio2022.fruteria.services.ProvService;
 
 @RestController
@@ -37,17 +36,17 @@ public class ProvRestController {
 	}
 
 	@GetMapping("/{id}")
-	public Proveedor getUser(@PathVariable("id") long id) {
+	public Proveedor getProv(@PathVariable("id") long id) {
 		return this.provService.getById(id);
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteUser(@PathVariable("id") long id) {
+	public void deleteProv(@PathVariable("id") long id) {
 		this.provService.delete(id);
 	}
 
 	@DeleteMapping
-	public ResponseEntity<Void> customDeleteUser(@RequestParam(name = "id", required = false) Long id,
+	public ResponseEntity<Void> customDeleteProv(@RequestParam(name = "id", required = false) Long id,
 			@RequestParam(name = "name", required = false) String name) {
 		if (id == null && name == null) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
@@ -61,39 +60,40 @@ public class ProvRestController {
 		return ResponseEntity.ok().build();
 	}
 
-	@PatchMapping("/{id}")
-	public Proveedor updateUser(@PathVariable("id") long id, @RequestBody User user) {
-		Proveedor userDb = this.provService.getById(id);
-		if (userDb != null) {
-			userDb.setName(user.getName());
-			userDb = this.provService.update(userDb);
+	@PostMapping("/{id}")
+	public Proveedor updateProv(@PathVariable("id") long id, @RequestBody Proveedor p) {
+		Proveedor ProvDb = this.provService.getById(id);
+		if (ProvDb != null) {
+			ProvDb.setName(p.getName());
+			ProvDb = this.provService.update(ProvDb);
 		}
-		return userDb;
+		return ProvDb;
 	}
+	
 
-	@PatchMapping("/name/{name}")
-	public List<Proveedor> updateUser(@PathVariable("name") String name, @RequestBody final User user) {
-		List<Proveedor> listUserDb = this.provService.getByName(name);
-		if (!listUserDb.isEmpty()) {
-			listUserDb.forEach(x -> {
-				x.setName(user.getName());
+	@PostMapping("/name/{name}")
+	public List<Proveedor> updateProv(@PathVariable("name") String name, @RequestBody final Proveedor p) {
+		List<Proveedor> listProvDb = this.provService.getByName(name);
+		if (!listProvDb.isEmpty()) {
+			listProvDb.forEach(x -> {
+				x.setName(p.getName());
 				this.provService.update(x);
 			});
 		}
-		return listUserDb;
+		return listProvDb;
 	}
 
-	@PatchMapping
+	@PostMapping
 	public List<Proveedor> updateByNameUser(@RequestParam("name") String name,
-			@RequestBody(required = true) final User user) {
-		List<Proveedor> listUserDb = this.provService.getByName(name);
-		if (!listUserDb.isEmpty()) {
-			listUserDb.forEach(x -> {
-				x.setName(user.getName());
+			@RequestBody(required = true) final Proveedor p) {
+		List<Proveedor> listProvDb = this.provService.getByName(name);
+		if (!listProvDb.isEmpty()) {
+			listProvDb.forEach(x -> {
+				x.setName(p.getName());
 				this.provService.update(x);
 			});
 		}
-		return listUserDb;
+		return listProvDb;
 	}
 
 }
