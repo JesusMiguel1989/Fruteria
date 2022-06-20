@@ -8,42 +8,40 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name = "usuarios")
-public class User implements Serializable{
+@Entity(name = "Envios")
+public class Envios implements Serializable{
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 9091892231815355962L;
-
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
 	@Column
-	private String name;
-	
-	
-//	@Temporal(TemporalType.TIMESTAMP)
-//	@Column
-//	private Date date;
-	
-//	@Transient
-//	private String name2;
-
+	private String direccion;
+	@Column
+	private String fecha;
 	public long getId() {
 		return id;
 	}
-
 	public void setId(long id) {
 		this.id = id;
 	}
-
-	public String getName() {
-		return name;
+	public String getDireccion() {
+		return direccion;
 	}
-
-	public void setName(String name) {
-		this.name = name;
+	public void setDireccion(String dirreccion) {
+		this.direccion = dirreccion;
 	}
+	public String getFecha() {
+		return fecha;
+	}
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
+	
+	
+
 }
