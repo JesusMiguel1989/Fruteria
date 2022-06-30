@@ -18,8 +18,8 @@ spring:
         - id: fruteria
           uri: lb://fruteria
           predicates: 
-            - Path: /fruta/**
+            - Path=/fruta/**
         - id: facturas
           uri: lb://facturas
           predicates: 
-            - Path: /facturas/**
+            - Path=/facturas/**
